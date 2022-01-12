@@ -45,23 +45,22 @@ function sumNumbers(arr) {
 // Iteration #3.1 Bonus:
 const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
 function sum(arr) {
-  let sum = 0;
+  let total = 0;
   if (arr.length === 0) {
     return 0;
   } else {    
     for (let i = 0; i < arr.length; i++){
       if (typeof arr[i] === Number) {
-        sum += arr[i]
+        total += arr[i]                         //=>>> ANNA, NÃO SEI O QUE DEU ERRADO NESSE AQUI!
       } else if (typeof arr[i] === String) {
-        sum += arr[i].length
+        total += arr[i].length
       } else if (typeof arr[i] === true) {
-        sum +=1
+        total +=1
       } 
     }
     
   }  
-  return sum
-
+  return total
 
 }
 
