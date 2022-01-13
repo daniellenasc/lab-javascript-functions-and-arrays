@@ -4,7 +4,7 @@ function maxOfTwoNumbers(num1, num2) {
     return num1;
   } else if (num1 < num2){
     return num2
-  } else if (num1 === num2) {
+  } else {
     return num1;
 }
 }
@@ -15,12 +15,16 @@ function maxOfTwoNumbers(num1, num2) {
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
 function findLongestWord(arr) {
-  if (arr.length === 0) {
+  if (!arr.length) {
     return null;
-  } else {
-    return arr.reduce((a, b) => a.length < b.length ? b : a, "") //===> ANNA, EU VI ISSO NO STACKOVERFLOW, MAS NÃO ENTENDIII
+  } 
+  let longestWord = "";
+  for (let i = 0; i < arr.length; i++){
+    if (arr[i].length > longestWord.length){
+      longestWord = arr[i];
+    }
   }
-  
+  return longestWord
 }
 
 
@@ -28,16 +32,8 @@ function findLongestWord(arr) {
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers(arr) {
-  if (arr.length === 0) {
-    return 0;
-  } else {
-    let sum = 0;
-    for(let i = 0; i<arr.length; i++){
-      sum += arr[i];
-    }
-    return sum;
-  }
+function sumNumbers(numberArray) {
+  return sum(numberArray);
 }
 
 
@@ -50,13 +46,15 @@ function sum(arr) {
     return 0;
   } else {    
     for (let i = 0; i < arr.length; i++){
-      if (typeof arr[i] === Number) {
+      if (typeof arr[i] === "number") {
         total += arr[i]                         //=>>> ANNA, NÃO SEI O QUE DEU ERRADO NESSE AQUI!
-      } else if (typeof arr[i] === String) {
+      } else if (typeof arr[i] === "string") {
         total += arr[i].length
       } else if (typeof arr[i] === true) {
-        total +=1
-      } 
+        total += 1
+      } else if (typeof arr[i] === "object"){
+        throw new Error("Unsupported data type sir or ma'am")
+      }
     }
     
   }  
