@@ -33,13 +33,16 @@ function findLongestWord(arr) {
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 function sumNumbers(numberArray) {
-  return sum(numberArray);
+  if (!numberArray.length){
+    return 0
+  }  return numberArray.reduce((acc, currentElement) => acc + currentElement)
 }
 
 
 
+
 // Iteration #3.1 Bonus:
-const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+/* const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
 function sum(arr) {
   let total = 0;
   if (arr.length === 0) {
@@ -59,8 +62,24 @@ function sum(arr) {
     
   }  
   return total
+} */
 
-}
+function sum(arr) {
+  let sum = 0;
+      
+    for (let i = 0; i < arr.length; i++){
+      if (typeof arr[i] === "object"){
+        throw new Error("Unsupported data type sir or ma'am")
+      } 
+      
+      if (typeof arr[i] === "string") {
+        sum += arr[i].length
+      } else {
+        sum += arr[i]
+      }
+    }
+    return sum
+ }  
 
 
 
@@ -94,7 +113,23 @@ function averageWordLength(arr) {
 }
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(arr) {
+  if (!arr.length){
+    return null
+  }
+
+  let sum = 0;
+
+  for (let i = 0; i < arr.length; i++){
+    if (typeof arr[i] === 'string'){
+      sum += arr[i].length
+    } else {
+      sum += arr[i]
+    }
+  } 
+  const avg = sum / arr.length;
+  return parseFloat(avg.toFixed(2));
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -111,21 +146,43 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray(arr) {
-  if (arr.length === 0){
+function uniquifyArray(words) {
+  if (!words.length) {
     return null;
-  } else { 
-    l
-  
   }
+
+  const uniqueWords = [];
+
+  for (let i = 0; i < words.length; i++) {
+    const index = uniqueWords.indexOf(words[i]);
+
+    if (index < 0) {
+      uniqueWords.push(words[i]);
+    }
+  }
+
+  return uniqueWords;
 }
+
 
 
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(wordArr, searchTerm) {
+  if (!wordArr.length){
+    return null
+  }
+  let found = false;
+
+  for (let i = 0; i < wordArr.length; i++){
+    if (wordArr[i] === searchTerm){
+      found = true;
+    }
+  }
+  return found;
+}
 
 
 
@@ -144,7 +201,21 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArr, searchTerm) {
+  if (!wordsArr.length) {
+    return 0;
+  }
+
+  let count = 0;
+
+  for (let i = 0; i < wordsArr.length; i++) {
+    if (searchTerm === wordsArr[i]) {
+      count++;
+    }
+  }
+
+  return count;
+}
 
 
 
